@@ -1,0 +1,11 @@
+
+@app.get("/component/{component_id}")  # path parameter
+async def get_component(component_id: int):
+    # operations
+    return {"component_id": component_id}
+
+
+@app.get("/component/")  # path parameter
+async def read_component(number: int, text: Optional[str]):
+    # operations
+    return {"number": number, "text": text}

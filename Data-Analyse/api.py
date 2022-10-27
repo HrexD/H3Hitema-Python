@@ -14,6 +14,7 @@ class CoordIn(BaseModel):
     lat: float
     lon: float
     zoom: Optional[int] = None
+    description: Optional[int] = None
 
 
 class Coord0ut(BaseModel):
@@ -21,6 +22,7 @@ class Coord0ut(BaseModel):
     lat: float
     lon: float
     zoom: Optional[int] = None
+    description: Optional[int] = None
 # get
 
 
@@ -29,9 +31,9 @@ async def hello_world():
     return {"hello": "world"}
 
 
-@app.post("/position/", response_model=Coord0ut)
+@app.post("/position/", response_model=Coord0ut, response_model_include={'descritption'})
 async def make_position(coord: CoordIn):
-    return {"new_coord": coord.dict()}
+    return coord
 
 
 if __name__ == "__main__":
